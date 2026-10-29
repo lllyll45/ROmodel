@@ -4,7 +4,6 @@ import numpy as np
 import torch
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
-# ВАЖНО: импортируем без префикса scripts
 from my_tooth_net import MyToothNet
 
 class MyToothDetector:
@@ -36,7 +35,8 @@ class MyToothDetector:
         boxes = []
         for i in range(1, n):
             x, y, w, h, area = stats[i]
-            if area > 200:
+            # Увеличили порог площади до 1500 и добавили проверку пропорций (не более чем 1:3)
+            if area > 1500 and (w / h < 3) and (h / w < 3):
                 boxes.append([x, y, w, h])
 
         return self._assign_fdi(boxes, (h_orig, w_orig))

@@ -41,7 +41,7 @@ def main():
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--name", type=str, default="default_run")
     parser.add_argument("--batch", type=int, default=8)
-    parser.add_argument("--imgsz", type=int, default=512) # <-- ДОБАВЛЕНО
+    parser.add_argument("--imgsz", type=int, default=512)
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -50,8 +50,9 @@ def main():
         print(f"GPU: {torch.cuda.get_device_name(0)}")
 
     train_transform = A.Compose([
-        A.Resize(args.imgsz, args.imgsz), # <-- ИСПОЛЬЗУЕМ args.imgsz
+        A.Resize(args.imgsz, args.imgsz),
         A.HorizontalFlip(p=0.5),
+        A.CLAHE(clip_limit=2.0, p=0.5), # <-- ДОБАВЛЕНО ДЛЯ КОНТРАСТА
         A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
         ToTensorV2(),
     ])
@@ -90,8 +91,7 @@ def main():
         print(f"Epoch {epoch:02d}: loss = {avg_loss:.4f}")
 
         torch.save(model.state_dict(), save_path)
-        print(f"  → Веса сохранены: {save_path}")
-
+        
     print("\nОбучение завершено!")
 
 if __name__ == "__main__":

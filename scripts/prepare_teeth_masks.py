@@ -31,15 +31,13 @@ def convert_split(split_name: str):
                 
                 _, xc, yc, bw, bh = map(float, parts[:5])
                 
-                # Центр и радиусы (в пикселях)
                 cx = int(xc * w)
                 cy = int(yc * h)
                 
-                # УМЕНЬШАЕМ ЗУБЫ ДО 60% ОТ РАЗМЕРА РАМКИ (было 0.8)
-                rx = int((bw * w) / 2 * 0.6)  
-                ry = int((bh * h) / 2 * 0.6)
+                # УМЕНЬШАЕМ ЗУБЫ ДО 50% ОТ РАЗМЕРА РАМКИ (для четких зазоров)
+                rx = int((bw * w) / 2 * 0.5)  
+                ry = int((bh * h) / 2 * 0.5)
 
-                # Рисуем ЗАЛИТЫЙ ЭЛЛИПС
                 if rx > 0 and ry > 0:
                     cv2.ellipse(mask, (cx, cy), (rx, ry), 0, 0, 360, 1, -1)
 
@@ -50,4 +48,4 @@ if __name__ == "__main__":
     for split in ["train", "valid", "test"]:
         if (YOLO_DATA / split).exists():
             convert_split(split)
-    print("Готово! Маски обновлены (использованы эллипсы).")
+    print("Готово! Маски обновлены.")

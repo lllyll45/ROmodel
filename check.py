@@ -6,10 +6,10 @@ from scripts.my_tooth_detector import MyToothDetector
 import cv2
 
 # Путь к тестовому снимку 
-img_path = Path("data/dentex/test/images/train_1.jpg") 
+img_path = Path("data/dentex/test/images/train_13.jpg") 
 
 # ЗАМЕНИТЕ имя файла на победителя из sweep (например, my_tooth_net_lr_1e3.pth)
-weights_path = "best_model/my_tooth_net.pth" 
+weights_path = "best_model/my_tooth_net_my_net_512_lr1e4.pth" 
 
 # Загружаем нашу модель
 detector = MyToothDetector(weights_path)
@@ -28,5 +28,5 @@ for t in teeth:
     cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
     cv2.putText(img, str(t['fdi']), (x, y-5), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
 
-cv2.imwrite("result.jpg", img)
+cv2.imwrite("result31_4.jpg", img)
 print("Результат сохранен в result.jpg")
