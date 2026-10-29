@@ -1,0 +1,6 @@
+name,imgsz,batch,lr,epoch,final_loss,weights,status
+v2_my_net_512_lr1e4,512,8,0.0001,30,0.1488,E:\мои документы\Питон проекты\Univer\RO\ROmodel\natashaModel\weights\candidates\v2_my_net_512_lr1e4.pth,ok
+v2_my_net_512_lr3e4,512,8,0.0003,30,0.1049,E:\мои документы\Питон проекты\Univer\RO\ROmodel\natashaModel\weights\candidates\v2_my_net_512_lr3e4.pth,ok
+v2_my_net_512_lr1e5,512,8,1e-05,30,0.5304,E:\мои документы\Питон проекты\Univer\RO\ROmodel\natashaModel\weights\candidates\v2_my_net_512_lr1e5.pth,ok
+v2_my_net_384_lr1e4,384,8,0.0001,30,0.1523,E:\мои документы\Питон проекты\Univer\RO\ROmodel\natashaModel\weights\candidates\v2_my_net_384_lr1e4.pth,ok
+v2_my_net_512_lr1e3,512,8,0.001,30,0.1394,E:\мои документы\Питон проекты\Univer\RO\ROmodel\natashaModel\weights\candidates\v2_my_net_512_lr1e3.pth,ok
